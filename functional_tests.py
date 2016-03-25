@@ -21,20 +21,20 @@ class NewVisitorTest(unittest.TestCase):
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('To-Do', header_text)
 
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        input_box = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(
-            inputbox.get_attribute('placeholder'),
+            input_box.get_attribute('placeholder'),
             'Enter a to-do item'
         )
 
-        inputbox.send_keys('Buy peacock feathers')
+        input_box.send_keys('Buy peacock feathers')
 
-        inputbox.send_keys(Keys.ENTER)
+        input_box.send_keys(Keys.ENTER)
         self.check_for_row_in_list_table('1: Buy peacock feathers')
 
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        inputbox.send_keys('Use peacock feathers to make a fly')
-        inputbox.send_keys(Keys.ENTER)
+        input_box = self.browser.find_element_by_id('id_new_item')
+        input_box.send_keys('Use peacock feathers to make a fly')
+        input_box.send_keys(Keys.ENTER)
 
         self.check_for_row_in_list_table('1: Buy peacock feathers')
         self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
